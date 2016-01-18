@@ -1,0 +1,13 @@
+<div class="row lomake">
+    <p ng-repeat="act in activityList">{{act.what}} ({{act.amount}})</p>
+    <form class="form-inline">
+        <h2>Mitä haluaisit tehdä?</h2>
+        <input type="text" class="form-control" ng-model='activity'>
+        <button class="btn btn-success" ng-click="addActivity()"> + </button>
+    </form>
+    <form class="form-inline">
+        <h2>Milloin sinulla on vapaata?</h2>
+        <input type="date" class="form-control" ng-model='date'>
+        <button class="btn btn-primary" ng-click="addDate()">when</button>
+    </form>
+</div>

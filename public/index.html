@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <title>WannaApp</title>
+    </head>
+    <body ng-app="WannaApp">
+        <div class="container-fluid">
+            <p ng-show="auth">Hei {{auth.google.displayName}}!</p>
+            <button ng-show="auth" ng-click="logout()">Kirjaudu ulos</button>
+            <button ng-hide="auth" ng-click="login()">Kirjaudu sisään!</button>
+        </div>
+        <div class="container-fluid">
+            <div ng-view></div>
+        </div>
+
+        <script src='bower_components/angular/angular.js'></script>
+        <script src='bower_components/angular-route/angular-route.js'></script>
+        <script src='bower_components/angularfire/dist/angularfire.js'></script>
+        <script src="bower_components/firebase/firebase.js"></script>
+        <script src='bower_components/jquery/dist/jquery.min.js'></script>
+        <script src='bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+        <script src="app/app.js"></script>
+        <script src="app/controllers/form_controller.js"></script>
+        <script src="app/controllers/user_controller.js"></script>
+        <script src="app/services/firebase_service.js"></script>
+        <script src="app/services/authentication_service.js"></script>
+        
+    </body>
+</html>
