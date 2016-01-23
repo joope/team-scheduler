@@ -6,7 +6,7 @@ WannaApp.service('FirebaseService', function($firebaseArray){
         return activities;
     }
     
-    this.getUserDates = function(uid){
+    this.getUser = function(uid){
         var user = $firebaseObject(ref.child(uid));
         return user;
     }

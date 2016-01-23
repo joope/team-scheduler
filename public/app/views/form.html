@@ -2,12 +2,16 @@
     <p ng-repeat="act in activityList">{{act.what}} ({{act.amount}})</p>
     <form class="form-inline">
         <h2>Mitä haluaisit tehdä?</h2>
-        <input type="text" class="form-control" ng-model='activity'>
+        <input type="text" class="form-control" ng-model='activity' list="activities" autofocus>
         <button class="btn btn-success" ng-click="addActivity()"> + </button>
     </form>
     <form class="form-inline">
         <h2>Milloin sinulla on vapaata?</h2>
         <input type="date" class="form-control" ng-model='date'>
-        <button class="btn btn-primary" ng-click="addDate()">when</button>
+        <button class="btn btn-success" ng-click="addDate()"> + </button>
     </form>
+    <p ng-repeat="date in dates">{{date}}</p>
+    <datalist id="activities">
+        <option ng-repeat="act in activities" value="{{act.what}} ({{act.amount}})"></option>
+    </datalist>
 </div>

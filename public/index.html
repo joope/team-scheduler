@@ -12,6 +12,7 @@
             <p ng-show="auth">Hei {{auth.google.displayName}}!</p>
             <button ng-show="auth" ng-click="logout()">Kirjaudu ulos</button>
             <button ng-hide="auth" ng-click="login()">Kirjaudu sisään!</button>
+            <p ng-show="!auth && errorMSG">{{errorMSG}}</p>
         </div>
         <div class="container-fluid">
             <div ng-view></div>
