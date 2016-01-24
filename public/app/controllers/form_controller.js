@@ -6,21 +6,29 @@ WannaApp.controller('FormController', function ($scope, $rootScope, FirebaseServ
         //console.log("added activity: " + $scope.activity);
         if ($rootScope.auth) {
             FirebaseService.addActivity({
-                what: $scope.activity,
-                who: $rootScope.auth.uid,
+                what: $scope.activity.what,
+                users: $rootScope.auth.uid,
                 when: "huomenna",
                 amount: 1
             });
-            $scope.activity = "";
+            $scope.activity.what = "";
         } else{
             $rootScope.errorMSG = "Kirjaudu ensin sisään!";
         }
     }
     
-    $scope.query = function(){
-        console.log("query: " + $scope.activity);
+    $scope.activityClicked = function(activity){
+        activity.amount++;
+        FirebaseService.save(activity);
     }
+    
+    $scope.query = function(){
+        if ($scope.activity && $scope.activity.what !== ''){
+            return true;
+        }
+        return false;
 
+    }
     $scope.addDate = function () {
         console.log("date: " + $scope.date); 
         $scope.dates.push($scope.date);

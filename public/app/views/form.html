@@ -1,17 +1,20 @@
 <div class="row lomake">
-    <p ng-repeat="act in activityList">{{act.what}} ({{act.amount}})</p>
     <form class="form-inline">
         <h2>Mitä haluaisit tehdä?</h2>
-        <input type="text" class="form-control" ng-model='activity' list="activities" autofocus>
+        <input type="text" class="form-control" ng-model='activity.what' ng-change="query()" autofocus>
         <button class="btn btn-success" ng-click="addActivity()"> + </button>
     </form>
+    <div>
+        <ul ng-show="search">
+            <li ng-repeat="act in activities| filter:activity | orderBy:'-amount'">
+                <button class="btn-link" ng-click="activityClicked(act)">{{act.what}} ({{act.amount}})</button>
+            </li>
+        </ul>
+    </div>
     <form class="form-inline">
         <h2>Milloin sinulla on vapaata?</h2>
         <input type="date" class="form-control" ng-model='date'>
         <button class="btn btn-success" ng-click="addDate()"> + </button>
     </form>
     <p ng-repeat="date in dates">{{date}}</p>
-    <datalist id="activities">
-        <option ng-repeat="act in activities" value="{{act.what}} ({{act.amount}})"></option>
-    </datalist>
 </div>
