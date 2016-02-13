@@ -19,14 +19,16 @@ WannaApp.controller('FormController', function ($scope, $rootScope, FirebaseServ
     
     $scope.activityClicked = function(activity){
         activity.amount++;
+        //activity.users = sinä
+        //$scope.activity = "";
         FirebaseService.save(activity);
     }
     
     $scope.query = function(){
         if ($scope.activity && $scope.activity.what !== ''){
-            return true;
+            $scope.search = true;
         }
-        return false;
+        $scope.search = false;
 
     }
     $scope.addDate = function () {

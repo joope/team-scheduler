@@ -4,12 +4,13 @@
         <input type="text" class="form-control" ng-model='activity.what' ng-change="query()" autofocus>
         <button class="btn btn-success" ng-click="addActivity()"> + </button>
     </form>
-    <div>
-        <ul ng-show="search">
-            <li ng-repeat="act in activities| filter:activity | orderBy:'-amount'">
-                <button class="btn-link" ng-click="activityClicked(act)">{{act.what}} ({{act.amount}})</button>
-            </li>
-        </ul>
+    <div id="searchbar" ng-show="activity.what">
+        <button type="button" class="list-group-item list-group-item" 
+                ng-repeat="act in activities| filter:activity | orderBy:'-amount'" 
+                ng-click="activityClicked(act)"
+                ng-disabled="auth.uid == act.users">
+            {{act.what}} <span class="pull-right">({{act.amount}})</span>
+        </button>
     </div>
     <form class="form-inline">
         <h2>Milloin sinulla on vapaata?</h2>
